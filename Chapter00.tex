@@ -1,0 +1,32 @@
+\makeCustomTitle
+% --- FRONT MATTER BEHAVIOR ---
+\begin{tikzpicture}[overlay, remember picture]
+	\node[anchor=north west, 
+	xshift=-.5cm, 
+	yshift=-2cm] at (current page.north west)
+	{\includegraphics[page=1, width=1.05\paperwidth, pagebox=cropbox]{SKNKulgeet.pdf}};
+\end{tikzpicture}
+\newpage
+%\null
+%\thispagestyle{empty}
+%\newpage
+
+\printcontentcoverpage
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+
+\printforwanrdVC
+\addcontentsline{toc}{chapter}{Forward} % Manually add to ToC
+\newpage
+\null
+\thispagestyle{empty}
+\newpage
+
+\printPrefaceDEAN
+\addcontentsline{toc}{chapter}{Preface} % Manually add to ToC
+\newpage
+\null
+\thispagestyle{empty}
+\newpage

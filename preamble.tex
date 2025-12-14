@@ -1,0 +1,717 @@
+% --- Document Class ---
+\documentclass[14pt]{extbook} % 'report' or 'book' is better for chapters
+\RequirePackage{iftex}      % Adds if-else statements to support multiple compilers
+% --- Page Layout ---
+\usepackage[utf8]{inputenc}
+\usepackage{tfrupee}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{fontawesome5}
+\usepackage{epigraph} % For quotes
+\RequirePackage{enumerate}
+\RequirePackage{enumitem}
+\usepackage{hyperref}
+\ifPDFTeX
+%% With pdfLaTeX, use Paletino as the main font and Roboto Slab as title fonts
+\RequirePackage[T1]{fontenc}  % Select T1 font encoding
+\RequirePackage{newpx}    % Palatino-like font...
+\RequirePackage{newpxmath}    % ...with support for mathematics
+
+\newcommand{\titlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{light}\selectfont}
+\newcommand{\largetitlestyle}{\fontfamily{RobotoSlab-TLF}\fontseries{thin}\selectfont}
+\else
+%% If XeLaTeX or LuaLaTeX is set as the compiler, the EPFL house style fonts are used
+\RequirePackage{fontspec} % Advanced font selection
+
+%% Use SuisseIntl as the main font
+\newfontfamily\suisseintl{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+Extension=.ttf,
+UprightFont=*-Regular,
+BoldFont=*-Bold,
+ItalicFont=*-RegularItalic,
+BoldItalicFont=*-BoldItalic]
+
+%% Adding SuisseIntl as the main font and supplementary fonts
+\setmainfont{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+Extension=.ttf,
+UprightFont=*-Regular,
+BoldFont=*-Bold,
+ItalicFont=*-RegularItalic,
+BoldItalicFont=*-BoldItalic]
+\setmathsf{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+Extension=.ttf,
+UprightFont=*-Regular,
+BoldFont=*-Bold,
+ItalicFont=*-RegularItalic,
+BoldItalicFont=*-BoldItalic]
+\setmathtt{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+Extension=.ttf,
+UprightFont=*-Regular,
+BoldFont=*-Bold,
+ItalicFont=*-RegularItalic,
+BoldItalicFont=*-BoldItalic]
+\setsansfont{SuisseIntl}
+[Path=layout/epfl/fonts/suisse-intl/,
+Extension=.ttf,
+UprightFont=*-Regular,
+BoldFont=*-Bold,
+ItalicFont=*-RegularItalic,
+BoldItalicFont=*-BoldItalic]
+\setmonofont{SuisseIntlMono}
+[Path=layout/epfl/fonts/suisse-intl-mono/,
+Scale=0.9,
+LetterSpace=-6,
+Extension=.ttf,
+UprightFont=*-Regular,
+BoldFont=*-Bold]
+
+\newfontfamily\titlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Bold.ttf}
+\newfontfamily\largetitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-SemiBold.ttf}
+\newfontfamily\subtitlestyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Thin.ttf}
+\newfontfamily\subjectstyle[Path=layout/epfl/fonts/suisse-intl/]{SuisseIntl-Regular.ttf}
+\newfontfamily\quotefont[Path=layout/epfl/fonts/suisse-intl-mono/]{SuisseIntlMono-Regular.ttf}
+
+%% Changing the quote environment to use SuissIntlMono
+\AtBeginEnvironment{quote}{\quotefont}
+\fi
+
+
+\usepackage[twoside, top=2.5cm, bottom=2.5cm, inner=30mm, outer=21mm, bindingoffset=6mm,headheight=40pt, % <--- CRITICAL FIX 1
+footskip=1.5cm]{geometry}
+\usepackage{setspace}
+\usepackage{extsizes}
+\geometry{b4paper}
+\usepackage{fancyhdr}
+\usepackage[explicit]{titlesec}
+\usepackage{parskip} 
+\usepackage{ragged2e} % For \justifying
+\usepackage{float}
+\usepackage{caption}
+\usepackage{pdfpages}
+\raggedbottom
+% --- Essential Packages ---
+\usepackage{tabularx}      % For width-controlled tables
+\usepackage{booktabs}      % For professional horizontal rules
+\usepackage{multirow}
+\usepackage[table]{xcolor} % For row coloring
+\usepackage{environ}       % REQUIRED: Allows capturing environment body for tabularx
+\usepackage{longtable}
+\usepackage{xltabular}
+% --- TColorBox (if needed for other distinct boxes) ---
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{skins, xparse}
+
+% --- Custom Definitions ---
+
+
+
+% 2. Define Custom Colors
+\definecolor{CollegeNavy}{RGB}{20, 90, 40}
+\definecolor{CollegeGold}{RGB}{218, 165, 32}
+\definecolor{AccentGrey}{RGB}{240, 240, 245}
+\definecolor{schedheader}{RGB}{20, 90, 40}   % Dark Gray for header
+\definecolor{schedodd}{RGB}{200, 245, 145}   % Light Gray for odd rows
+\definecolor{schedeven}{RGB}{255, 255, 255}  % White for even rows
+  % Light Gray for odd rows
+\definecolor{brandcolor}{RGB}{0,100,54} 
+
+
+% 3. Booktabs & Color Compatibility Fix
+%    Removes vertical white gaps around rules when using row colors.
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\setlength{\extrarowheight}{0.8ex}
+
+% 4. Graphics and Images
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{calc, shadows, positioning}
+\newcommand{\hlite}[2][lllblue]{%
+	\hspace{4pt}{%
+		\tikz[baseline=(N.base)]\node[fill=#1,rounded corners](N){#2};
+	}%
+	\hspace{4pt}%
+}
+\RequirePackage{xspace}     % Define commands that appear not to eat spaces
+\RequirePackage{microtype}  % Refinements towards typographical perfection
+\RequirePackage{wrapfig}
+
+%\usepackage[export]{adjustbox} % For valign=m in tables
+% --- The Environment Definition ---
+% Using \NewEnviron to capture the body (\BODY) allows tabularx
+% to calculate column widths correctly before processing the rows.
+% Footer Box
+% Custom Column for Tabularx
+% 1. Define the 'L' column (Left-aligned X column)
+%    Calculates width automatically but keeps text left-aligned.
+\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+
+
+% --- TCOLORBOX DEFINITIONS ---
+
+\newtcolorbox{SectionBox}[2][]{
+	enhanced, breakable, skin=enhanced,
+	colback=white, colframe=CollegeNavy, colbacktitle=CollegeNavy,
+	coltitle=white, fonttitle=\Large\bfseries,
+	title={#2},
+	attach boxed title to top left={xshift=5mm, yshift=-2mm},
+	boxed title style={sharp corners, rounded corners=northeast, colback=CollegeNavy, boxrule=0pt, frame hidden},
+	drop fuzzy shadow,
+	#1
+}
+
+\newtcolorbox{NoteBox}[1][]{
+	enhanced, breakable, frame hidden, interior hidden,
+	boxsep=0pt, left=10mm,
+	borderline west={4pt}{0pt}{CollegeGold},
+	coltitle=CollegeNavy, fonttitle=\bfseries\large,
+	attach boxed title to top left={xshift=10mm, yshift=-3mm},
+	boxed title style={empty},
+	title={\faExclamationCircle\ \ Note},
+	#1
+}
+
+\newtcolorbox{MissionBox}[1][]{
+	enhanced, colback=AccentGrey!20, colframe=CollegeNavy,
+	borderline west={4pt}{0pt}{CollegeGold}, boxrule=0.5pt,
+	title={#1}, coltitle=CollegeNavy, fonttitle=\large\bfseries,
+	attach title to upper, after title={\par\vspace{0.5em}},
+	sharp corners, rounded corners=southeast, arc=6mm
+}
+
+\newtcolorbox{footerbox}{
+	enhanced, width=\textwidth, height=0.85cm,
+	nobeforeafter, colback=brandcolor, colframe=brandcolor,
+	coltext=white, boxrule=0pt, arc=3mm, auto outer arc,
+	valign=center,
+	overlay={
+		\node[anchor=west, text=white, font=\sffamily\bfseries\small] at ([xshift=4mm]frame.west) {Information Bulletin};
+		\node[anchor=center, text=white, font=\sffamily\bfseries\large] at (frame.center) {\thepage};
+		\node[anchor=east, text=white, font=\sffamily\bfseries\small] at ([xshift=-4mm]frame.east) {2025--26};
+	}
+}
+
+% Figure Box
+% Define the style once
+\tcbset{
+	mygraphics/.style={
+		enhanced,
+		boxsep=0pt,
+		arc=0pt,
+		outer arc=1pt,
+		boxrule=0.7pt,
+		colframe=CollegeNavy,       % Border color
+		colback=white,
+		drop fuzzy shadow,    % The shadow
+		fonttitle=\small\sffamily,
+		halign title=center,  % Center the title
+		% This ensures the image fills the box width perfectly
+		graphics options={width=\linewidth} 
+	}
+}
+
+% -----------------------------------------------------------------------------
+% Page Style Setup
+% -----------------------------------------------------------------------------
+
+% Define the Custom Header Rule (Line)
+\newcommand{\beautifulheadrule}{%
+	\vspace{-4pt} 
+	\begin{tcolorbox}[
+		colback=brandcolor,
+		colframe=brandcolor,
+		height=2pt, 
+		width=\headwidth,
+		arc=1pt, 
+		boxrule=0pt,
+		nobeforeafter,
+		enhanced
+		]\end{tcolorbox}%
+}
+
+\pagestyle{fancy}
+\fancyhf{} 
+\renewcommand{\headrulewidth}{0pt}
+
+% -- Header Configuration --
+\fancyhead[RO,LE]{\sffamily\bfseries\color{brandcolor}\nouppercase{\leftmark}}
+\renewcommand{\headrule}{\beautifulheadrule}
+
+% -- Footer Configuration --
+\fancyfoot[C]{\begin{footerbox}\end{footerbox}}
+\renewcommand{\footrulewidth}{0pt} 
+
+% -- Plain Style (for Chapter Title Pages) --
+\fancypagestyle{plain}{
+	\fancyhf{}
+	\fancyfoot[C]{\begin{footerbox}\end{footerbox}}
+	\renewcommand{\headrulewidth}{0pt} 
+	\renewcommand{\footrulewidth}{0pt}
+}
+
+
+%% ----------------------------------------------------------------------
+%%    Formatting the titles and table of contents
+%% ----------------------------------------------------------------------
+%% Format the chapter titles and spacing
+%\titleformat{\chapter}[display]
+%{\flushright}
+%{\fontsize{72}{72}\color{CollegeNavy}\selectfont\largetitlestyle\thechapter}
+%{0pt}
+%{\fontsize{48}{48}\titlestyle}
+%\vspace{-2\baselineskip}
+\titleformat{\chapter}[block]
+{\normalfont}
+{}
+{0pt}
+{%
+	\noindent
+	% LEFT NUMBER BOX
+	\begin{minipage}[c]{0.22\textwidth}
+		\begin{tcolorbox}[
+			colback=CollegeNavy,
+			colframe=CollegeNavy,
+			sharp corners,
+			width=\linewidth,
+			height=2.8cm,
+			valign=center,
+			halign=center,
+			left=0pt, right=0pt, top=0pt, bottom=0pt,
+			nobeforeafter
+			]
+			\fontsize{48}{48}\color{white}\largetitlestyle\thechapter
+		\end{tcolorbox}
+	\end{minipage}%
+	\hfill
+	% RIGHT TITLE BOX
+	\begin{minipage}[c]{0.75\textwidth}
+		\begin{tcolorbox}[
+			colback=white,
+			colframe=CollegeGold,
+			sharp corners,
+			boxrule=2pt,
+			left=10pt, right=10pt, top=10pt, bottom=10pt,
+			nobeforeafter
+			]
+			\fontsize{28}{32}\titlestyle\bfseries #1
+		\end{tcolorbox}
+	\end{minipage}
+}
+\titleformat{name=\chapter, numberless}[block]
+{\normalfont}
+{}
+{0pt}
+{%
+	\noindent
+	\begin{tcolorbox}[
+		colback=white,
+		colframe=CollegeGold,
+		sharp corners,
+		boxrule=2pt,
+		width=\linewidth,    % Expand to full width
+		halign=center,       % Optional: Center the text
+		left=10pt, right=10pt, top=10pt, bottom=10pt,
+		nobeforeafter
+		]
+		\fontsize{28}{32}\selectfont\titlestyle\bfseries #1
+	\end{tcolorbox}
+}
+\titlespacing*{\chapter}{0pt}{-5pt}{0pt}
+
+%% Format the section titles and spacing
+\titleformat{\section}
+{\Large\titlestyle\bfseries\color{CollegeNavy}}
+{\thesection.}
+{5pt}
+{#1}
+\titlespacing*{\section}{0pt}{\baselineskip}{0pt}
+
+%% Format the subsections titles and spacing
+\titleformat{\subsection}
+{\large\titlestyle\color{CollegeNavy!80!black}\bfseries}
+{\thesubsection.}
+{5pt}
+{#1}
+\titlespacing*{\subsection}{0pt}{\baselineskip}{0pt}
+
+%% Format the subsubsections titles and spacing
+\titleformat{\subsubsection}
+{\titlestyle\bfseries}
+{#1}
+{0pt}
+{}
+\titlespacing*{\subsubsection}{0pt}{\bigskipamount}{0pt}
+
+\newcommand{\chapterimage}[2]{%
+	\begin{tikzpicture}[remember picture,overlay]
+		% A rectangle anchored at the top-left of the page and spanning \paperwidth
+		% Use 'shading angle' to control gradient direction (90 = top->bottom)
+		\node[
+		anchor=north west,
+		inner sep=0pt,
+		outer sep=0pt,
+		minimum width=\paperwidth,
+		minimum height=#2,
+		rectangle,
+		shading=axis,
+		shading angle=90,                % 90 degrees: top color -> bottom color
+		top color=CollegeNavy!75,               % change these two lines to other colours
+		bottom color=CollegeGold!20
+		] at (current page.north west) {};
+	\end{tikzpicture}%
+	% Reserve vertical space equal to the gradient height so normal content is pushed down
+	\vspace*{#2}%
+	\vspace*{1cm} % extra breathing room between banner and chapter title
+}
+
+% --- PREAMBLE ADDITION ---
+\newtcolorbox{FeatureBox}[2][]{
+	enhanced,
+	skin=enhanced,
+	breakable=false, % Keep image and text together
+	width=\textwidth,
+	title={#2},
+	colframe=brandcolor,      % Uses your defined brand color
+	colback=white,
+	coltitle=white,
+	fonttitle=\large\bfseries\sffamily,
+	attach boxed title to top left={xshift=0mm, yshift=0mm},
+	boxed title style={
+		colback=CollegeNavy!90,
+		sharp corners=southeast, 
+		rounded corners=northwest, 
+		frame hidden
+	},
+	separator sign=none,
+	% Side-by-Side configuration
+	sidebyside,
+	sidebyside align=top,
+	righthand width=0.5\textwidth, % Reserve 40% width for the image
+	sidebyside gap=5mm,
+	drop fuzzy shadow,
+	#1
+}
+\newcommand{\TotalRow}[1]{%
+	\midrule
+	\multicolumn{3}{r}{\textbf{Total Credits}} & \textbf{#1} \\
+}
+
+\NewEnviron{SemesterSchedule}[1]{%
+	\par\vspace{1em}\noindent
+	\textbf{\large #1} % Section title style
+	\vspace{0.5em}
+	\par\noindent
+	% Start row coloring from row 2 (after header)
+	\rowcolors{2}{CollegeNavy!5}{white} 
+	
+	% Table setup
+	\renewcommand{\arraystretch}{1.1}
+	\begin{tabularx}{\textwidth}{@{\hspace{.5em}} c c L c @{\hspace{.5em}}}
+		\toprule
+		% Header Row
+		\rowcolor{schedheader}
+		\textbf{\color{white} S.N.} & 
+		\textbf{\color{white} Code} & 
+		\textbf{\color{white} Title of the Course} & 
+		\textbf{\color{white} Cr. Hr.} \\
+		\midrule
+		
+		% The body of the environment captured by 'environ'
+		\BODY
+		
+		\bottomrule
+	\end{tabularx}
+	\vspace{1.5em} % Space after table
+}
+
+% --- The Environment ---
+\NewEnviron{SemesterSchedule5}[1]{%
+	\par\vspace{1em}\noindent
+	\textbf{\large #1} % Title: e.g., "PART-I, SEMESTER-I"
+	\vspace{0.5em}
+	\par\noindent
+	% Turn on row coloring (starts at row 2)
+	\rowcolors{2}{CollegeNavy!5}{white} 
+	
+	% Column Spec: 
+	% 1. Code (l - compact)
+	% 2. Title (L - expandable)
+	% 3. Cr. Hr. (c - centered)
+	% 4. Dept (l - compact/left)
+	\renewcommand{\arraystretch}{1.2}
+	\begin{tabularx}{\textwidth}{@{\hspace{0.5em}} l L c L @{\hspace{0.25em}}}
+		\toprule
+		% Header Row
+		\rowcolor{schedheader}
+		\textbf{\color{white} Code} & 
+		\textbf{\color{white} Course Title} & 
+		\textbf{\color{white} Cr. Hr.} & 
+		\textbf{\color{white} Dept/Unit} \\
+		\midrule
+		
+		\BODY
+		
+		\bottomrule
+	\end{tabularx}
+	\vspace{1em}
+}
+\def\printedicion{College of Horticulture, SKNAU, Jobner}
+\def\printcollegeUni{
+	\begin{center}
+		{\Large \bfseries College of Horticulture \\}
+		{\large A constituent college of \\
+			(Sri Karan Narendra Agriculture University, Jobner)\\}
+		{\Large Durgapura-Jaipur, 302018}
+	\end{center}
+}
+\def\printauthorall{
+	\begin{center}
+		\resizebox{.5\textwidth}{!}{
+			\begin{tabular}{l @{\hfill} r}
+				Dr. Saurav Singla & (Convener) \\			
+				Dr. Bharti Shokeen & (Member) \\
+				Dr. HP Parewa & (Member) \\
+				Dr. Vijay Parashar & (Member) \\
+				Dr. Ashok Choudhary & (Member) \\
+				Dr. Ranjna Sirohi & (Member)
+			\end{tabular}
+		}
+	\end{center}
+}
+
+\def\namelogo{png/titlelogo.png}
+\def\sknlogo{png/sknlogo.png}
+\def\printtitle{Information Bulletin}
+\def\printauthor{Dean and Faculty Chairman}
+\def\namelogo{png/titlelogo.png}
+\def\sknlogo{png/sknlogo.png}
+\def\printlogo{\includegraphics[width=.15\textwidth]{\namelogo}}
+\def\printsknlogo{\includegraphics[width=.15\textwidth]{\sknlogo}}
+
+
+\newcommand{\makeCustomTitle}{
+	\begin{titlepage}
+		\begin{tikzpicture}[remember picture, overlay]
+			% A. Navy Top Block
+			\path[fill=CollegeNavy] (current page.north west) rectangle ($(current page.north east)+(0,-9cm)$);
+			
+			% B. Gold Accent Line
+			\draw[color=CollegeGold, line width=3pt] 
+			($(current page.north west)+(0,-9cm)$) -- ($(current page.north east)+(0,-9cm)$);
+			
+			% C. Main Title
+			\node[text=white, anchor=north, align=center, font=\sffamily\bfseries\fontsize{40}{48}\selectfont] 
+			at ($(current page.north)+(0,-3.5cm)$) {
+				INFORMATION BULLETIN
+			};
+			
+			% D. Year Pill
+			\node[anchor=north] at ($(current page.north)+(0,-6cm)$) {
+				\begin{tcolorbox}[hbox, colback=CollegeGold, colframe=CollegeGold, arc=6pt, boxsep=5pt, left=10pt, right=10pt, shadow={0mm}{-1mm}{0mm}{black!50}]
+					\color{CollegeNavy}\bfseries\sffamily\Large 2025--2026
+				\end{tcolorbox}
+			};
+			
+			% E. Hero Image
+			\node[anchor=north] at ($(current page.north)+(0,-8.85cm)$) {
+				\begin{tcolorbox}[enhanced, size=tight, width=0.95\paperwidth, colback=white, colframe=CollegeGold, boxrule=1.5mm, drop fuzzy shadow, arc=2mm, rounded corners=all]
+					\centering
+					% Ensure image matches file availability
+					\includegraphics[width=.93\paperwidth, keepaspectratio]{png/COHAI.png}
+				\end{tcolorbox}
+			};
+		\end{tikzpicture}
+		
+		% Spacing for bottom text
+		\vspace*{22.5cm} 
+		
+		\begin{center}
+			{\Huge \bfseries \color{CollegeNavy} COLLEGE OF HORTICULTURE} \\[0.5em]
+			{\large \bfseries (SRI KARAN NARENDRA AGRICULTURE UNIVERSITY, JOBNER) } \\[0.2em]
+			{\Huge \textbf{DURGAPURA -- JAIPUR, 302018}}
+			\vspace{1cm}
+		\end{center}
+	\end{titlepage}
+}
+
+% INNER COVER PAGE DEFINITION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand\printcontentcoverpage{
+	{\thispagestyle{empty}
+		\noindent
+		\ifdefvoid{\namelogo}{}{\printlogo}
+		\hfill 
+		\ifdefvoid{\sknlogo}{}{\printsknlogo}
+		\vspace{2cm}
+		\begin{tcolorbox}[blank, width = \textwidth, halign=center]
+			{\fontsize{40}{48}\textbf{\printtitle}} \\ 
+			\vspace{1em}
+			{\fontsize{40}{48}\textbf{2024-25}} \\
+			{\color{CollegeGold}
+				\rule{\linewidth}{2pt}\\ 
+				\vspace{-2em}
+				\hspace*{2cm}\rule{.9\linewidth}{2pt}
+			}
+			{\huge \textit{Editors:\\}}
+			\vspace{0.5cm}
+			{\Large Chief Editor-\\}
+			{\Large Prof. (Dr.) L.N. Bairwa\\}
+			{\Large\bfseries\printauthor\\} 
+			\vspace{0.5cm}
+			\begin{center}
+				\Large \printauthorall
+			\end{center}			
+			\vspace{0.5cm}
+		\end{tcolorbox}
+		\vfill
+		\begin{center}
+			\printcollegeUni
+		\end{center}
+		\clearpage
+	}
+}
+\newcommand\printforwanrdVC{
+	\thispagestyle{empty}
+	\begin{center}
+		{\color{CollegeNavy}
+		% Replace 'logo.png' with your actual logo file name
+		\includegraphics[height=2.5cm]{\sknlogo} \\ 
+		\vspace{1em}
+		\textbf{\Large SRI KARAN NARENDRA AGRICULTURE UNIVERSITY} \\ 
+		\vspace{.5em}
+		\textbf{\large JOBNER-303329 JAIPUR (RAJ.)}
+		\vspace{0.75em}
+	}
+		\hrule height 1.5pt % A thick horizontal line
+	\end{center}	
+	\vspace{1.5em}
+	% ==========================================
+	% TITLE
+	% ==========================================
+	\begin{center}
+		\textbf{\Huge\color{CollegeGold} FOREWORD}
+	\end{center}
+	
+	\vspace{1em}
+	
+	% ==========================================
+	% CONTENT WITH WRAPPED PHOTO
+	% ==========================================
+	% Sets 1.5 line spacing for better readability
+	
+	% {l} = Left side, {0.25\textwidth} = Width of the photo area
+	% Replace 'vc_photo.jpg' with the Vice Chancellor's photo
+	\begin{wrapfigure}{l}{0.25\textwidth}
+		\vspace{-10pt} % Adjusts vertical position slightly up
+		\centering
+		\includegraphics[width=0.23\textwidth, height=0.3\textwidth, keepaspectratio]{jpg/HVC.jpg} 
+		% Optional: Add a frame around the photo
+		% \frame{\includegraphics[width=0.23\textwidth]{vc_photo.jpg}}
+	\end{wrapfigure}
+	{\color{black}
+	\noindent The Information Bulletin 2025-26 of Sri Karan Narendra Agriculture University, Jobner, is an informative document prepared especially for students of undergraduate and postgraduate courses running in different constituent colleges of this University. 
+	
+	The embodiment of various sections like introductory information about the University and its colleges, admission procedure, degree and post-graduate courses, rules and regulations regarding students' conduct, indiscipline, hostel admission, awards, scholarships, reservation policy, attendance, use of unfair means etc., are aimed at acquainting the new entrants with the agricultural education system prevalent in higher institutes of education. 
+	
+	This bulletin will help the students in learning and inculcating habits relating to better civic sense, living in groups, and maintaining a congenial and harmonious atmosphere essentially required for character building, personality development and higher academic excellence with a view to achieving self-reliance and developing a positive outlook towards people and life to have a better tomorrow.
+	
+	The efforts of Dr. L.N. Bairwa, Dean and Faculty Chairman, and his team in bringing out this important informative publication are commendable. I appreciate and congratulate them all for this nice endeavour. I hope this handy and useful information publication will facilitate better insight and can be referred to and used by all who are desirous of learning about the University’s educational system and standards.
+	
+	% ==========================================
+	% SIGNATURE SECTION
+	% ==========================================
+	\vspace{2em}
+	
+	\noindent
+	\begin{minipage}{0.4\textwidth}
+		\textbf{Jobner, 2025}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}{0.5\textwidth}
+		\begin{flushright}
+			\textbf{(P. S. Chauhan)} \\
+			Kulguru \\
+			SKNAU, Jobner
+		\end{flushright}
+	\end{minipage}
+}
+	\clearpage
+}
+
+\newcommand\printPrefaceDEAN{
+	\thispagestyle{empty}
+	\begin{center}
+		{\color{CollegeNavy}
+		% Replace 'logo.png' with your actual logo file name
+		\includegraphics[height=2.5cm]{\namelogo} 
+		\hfill
+		\includegraphics[height=2.5cm]{\sknlogo}\\ 
+		\vspace{1em}
+		\textbf{\Large COLLEGE OF HORTICULTURE} \\ 
+		\vspace{.5em}
+		\textbf{\large (SRI KARAN NARENDRA AGRICULTURE UNIVERSITY, JOBNER} \\ 
+		\vspace{.5em}
+		\textbf{\large DURGAPURA -- JAIPUR 303329 (RAJ.)}
+	}
+		\vspace{0.5em}
+		\hrule height 1.5pt % A thick horizontal line
+	\end{center}	
+	\vspace{1.5em}
+	% ==========================================
+	% TITLE
+	% ==========================================
+	\begin{center}
+		\textbf{\Huge\color{CollegeGold} PREFACE}
+	\end{center}
+	
+	\vspace{1em}
+	
+	% ==========================================
+	% CONTENT WITH WRAPPED PHOTO
+	% ==========================================
+	% Sets 1.5 line spacing for better readability
+	
+	% {l} = Left side, {0.25\textwidth} = Width of the photo area
+	% Replace 'vc_photo.jpg' with the Vice Chancellor's photo
+	\begin{wrapfigure}{l}{0.25\textwidth}
+		\vspace{-10pt} % Adjusts vertical position slightly up
+		\centering
+		\includegraphics[width=0.23\textwidth, height=0.3\textwidth, keepaspectratio]{jpg/dean.jpg} 
+		% Optional: Add a frame around the photo
+		% \frame{\includegraphics[width=0.23\textwidth]{vc_photo.jpg}}
+	\end{wrapfigure}
+	{\color{black!70}
+	\noindent The Information Bulletin 2025-26 of Sri Karan Narendra Agriculture University, Jobner, is an informative document prepared especially for students of undergraduate and postgraduate courses running in different constituent colleges of this University. 
+	
+	The embodiment of various sections like introductory information about the University and its colleges, admission procedure, degree and post-graduate courses, rules and regulations regarding students' conduct, indiscipline, hostel admission, awards, scholarships, reservation policy, attendance, use of unfair means etc., are aimed at acquainting the new entrants with the agricultural education system prevalent in higher institutes of education. 
+	
+	This bulletin will help the students in learning and inculcating habits relating to better civic sense, living in groups, and maintaining a congenial and harmonious atmosphere essentially required for character building, personality development and higher academic excellence with a view to achieving self-reliance and developing a positive outlook towards people and life to have a better tomorrow.
+	
+	The efforts of Dr. L.N. Bairwa, Dean and Faculty Chairman, and his team in bringing out this important informative publication are commendable. I appreciate and congratulate them all for this nice endeavour. I hope this handy and useful information publication will facilitate better insight and can be referred to and used by all who are desirous of learning about the University’s educational system and standards.
+	
+	% ==========================================
+	% SIGNATURE SECTION
+	% ==========================================
+	\vspace{2em}
+	
+	\noindent
+	\begin{minipage}{0.4\textwidth}
+		\textbf{Jobner, 2025}
+	\end{minipage}%
+	\hfill
+	\begin{minipage}{0.5\textwidth}
+		\begin{flushright}
+			\textbf{(L.N. Bairwa)} \\
+			Dean and Faculty Chairman \\
+			Faculty of Horticulture (SKNAU),\\
+			Durgapura- Jaipur Jobner
+		\end{flushright}
+	\end{minipage}
+}
+	\clearpage
+}

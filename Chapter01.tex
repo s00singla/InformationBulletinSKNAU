@@ -1,4 +1,6 @@
-{\chapter{INTRODUCTION}
+{\justifying
+	\chapter{INTRODUCTION}
+	\vspace{-3cm}
 	% Epigraph styling
 	\chapterimage{}{5em}
 %	\setlength{\epigraphwidth}{0.9\textwidth}
@@ -8,54 +10,104 @@
 	\tcbincludegraphics[mygraphics, title={SKN Agriculture Univeristy, Jobner}]{jpg/sknau.jpg}
 
 Sri Karan Narendra Agriculture University, formerly a part of the Swami Keshwanand Rajasthan Agricultural University, Bikaner became a separate entity in September 2013 for central Rajasthan covering fifteen districts namely; Ajmer, Jaipur, Dausa, Tonk, Sikar, Bharatpur, Deeg, Neem Ka Thana, Dudu, Kotputali, Dholpur and Alwar. The University is expected to play a very vital role in the development of Agriculture in the broad sense and provide trained human resources, carry out production-oriented research programmes, adoption and propagate new technologies in the field of Agriculture and allied sciences with a view to improve the general economic conditions of the farmers of the state.
+\section{Main Objectives}
 The main objectives of the University are:
-\begin{enumerate}
-	\item To impart education in agriculture and allied branches of study;
-	\item To introduce advancement of learning and research work in agricultural and allied sciences;	
-	\item To undertake extension education programmes especially for rural people of the state of Rajasthan; 
-	\item To undertake such other work, activity or project as the University may deem proper in order to achieve
-	the objectives for which it has been established.
-\end{enumerate}
+\begin{MissionBox}[Objectives]
+	\begin{enumerate}
+		\item To impart education in agriculture and allied branches of study;
+		\item To introduce advancement of learning and research work in agricultural and allied sciences;	
+		\item To undertake extension education programmes especially for rural people of the state of Rajasthan; 
+		\item To undertake such other work, activity or project as the University may deem proper in order to achieve
+		the objectives for which it has been established.
+	\end{enumerate}
+\end{MissionBox}
 
-{
-	\renewcommand{\arraystretch}{1.2}
-	\small
-	\begin{longtable}{@{}p{.30\textwidth}p{.26\textwidth}p{.17\textwidth}p{.25\textwidth}@{}}
-		\caption{Name and Details of office bearers of SKNAU, Jobner} \label{tab:office-bearers}\\
-		\toprule
-		\textbf{Designation} & \textbf{Name} & \textbf{Mob} & \textbf{Email} \\* \midrule
-		\endfirsthead
-		
-		\multicolumn{4}{c}{{\bfseries Table \thetable\ continued from previous page}} \\
-		\toprule
-		\textbf{Designation} & \textbf{Name} & \textbf{Mob} & \textbf{Email} \\* \midrule
-		\endhead
-		
-		\bottomrule
-		\endfoot
-		\endlastfoot
-		
-		Vice-Chancellor & Dr. Balraj Singh & 01425-254039 & vc@sknau.ac.in \\
-		Registrar, SKNAU & Er. Ram Ratan Sharma & 01425-254980 & registrar@sknau.ac.in \\
-		Comptroller & Shri B. L. Banjara, RAcS & 01425-254988 & comptroller@sknau.ac.in \\
-		Dean, SKNCOA & Dr. M. R. Choudhary & 01425-254022 & dean.skncoa@sknau.ac.in \\
-		Dean, COH Durgapura & Dr. L. N. Bairwa & -- & dean.coh@sknau.ac.in \\
-		Director, RARI & Dr. Sunita Gupta & 0141-2550229 & director.rari@sknau.ac.in \\
-		Director, Education & Dr. N. K. Gupta & 01425-254983 & director.edu@sknau.ac.in \\
-		Director, Research & Dr. M. L. Jakhar & 01425-254041 & director.research@sknau.ac.in \\
-		Director, Ext. Edu. & Dr. Slidesh Kumar & 01425-254035 & director.ext@sknau.ac.in \\
-		Director, PME & Dr. S. K. Khandelwal & 01425-254987 & director.pme@sknau.ac.in \\
-		Director, Students’ Welfare & Dr. K. C. Sharma & 01425-254984 & dsw@sknau.ac.in \\
-		Director, HRD & Dr. K. C. Sharma & 7976584932 & director.hrd@sknau.ac.in \\
-		Controller of Exam & Dr. R. N. Sharma & 01425-254981 & coe@sknau.ac.in \\
-		Coord. PG Exam & Dr. D. K. Gothwal & 9928845911 & coordinatorpg.exam@sknau.ac.in \\
-		Estate Officer & Er. Lakhbeer Singh & 01425-254982 & estateofficer@sknau.ac.in \\
-		Incharge, CIMCA & Dr. S. Marker & 01425-254900 & cimca@sknau.ac.in \\
-		University Librarian & Dr. L. R. Yadav & 9414518051 & librarian@sknau.ac.in \\
-		Sec., Sports Board & Dr. Basant Kr. Bhinchhar & 8052645461 & sports@sknau.ac.in \\
-		Sec., CCDC & Dr. D. K. Gotuwal & 9928845911 & chairman.cdc@sknau.ac.in \\
-		Incharge, Vehicle Pool & Dr. Upendra Singh & 9460515989 & poolofficer@sknau.ac.in \\* \bottomrule
-	\end{longtable} 
+{\begingroup % Localizes the font change so it doesn't affect the rest of the document
+\small      % Reduces font size to fit columns better
+\renewcommand{\arraystretch}{1.3} % Row spacing
+\rowcolors{2}{CollegeNavy!5}{white} % Alternating colors
+
+% Column Spec: Same as before (L = Auto-wrap X column)
+\begin{xltabular}{\linewidth}{@{\hspace{0.5em}} L p{3.9cm} c L @{\hspace{0.5em}}}
+	
+	% ==========================================
+	% 1. HEADER FOR THE FIRST PAGE
+	% ==========================================
+	\caption{Offices and officers of the University} \\ % Optional Caption
+	\toprule
+	\rowcolor{schedheader}
+	\textbf{\color{white} Office / Unit} & 
+	\textbf{\color{white} Name of Officer} & 
+	\textbf{\color{white} Contact No.} & 
+	\textbf{\color{white} Email `@sknau.ac.in' } \\
+	\midrule
+	\endfirsthead
+	
+	% ==========================================
+	% 2. HEADER FOR SUBSEQUENT PAGES
+	% ==========================================
+	\multicolumn{4}{l}{\textit{Continued from previous page}} \\
+	\toprule
+	\rowcolor{schedheader}
+	\textbf{\color{white} Office / Unit} & 
+	\textbf{\color{white} Name of Officer} & 
+	\textbf{\color{white} Contact No.} & 
+	\textbf{\color{white} Email `@sknau.ac.in'} \\
+	\midrule
+	\endhead
+	
+	% ==========================================
+	% 3. FOOTER FOR BROKEN PAGES
+	% ==========================================
+	\midrule
+	\multicolumn{4}{r}{\textit{Continued on next page...}} \\
+	\endfoot
+	
+	% ==========================================
+	% 4. FOOTER FOR THE LAST PAGE
+	% ==========================================
+	\bottomrule
+	\endlastfoot
+	
+	% ==========================================
+	% 5. DATA CONTENT
+	% ==========================================
+	Kulguru & Prof. Pushpendra Singh Chauhan & 01425-254039 & vc@ \\
+	Registrar & Sh. Mukesh Kumar Moond & 01425-254980 & registrar@ \\
+	Comptroller & Sh. B. R. Meena & 01425-254988 & comptroller@ \\
+	Chairman, Faculty of Agriculture \& Dean, SKNCOA & Dr. M. R. Choudhary & 01425-254022 & dean.skncoa@ \\
+	Dean, COA, Lalsot, Dausa & Dr. D. K. Yadav & 7976144702 & dean.coalalsot@ \\
+	Dean, COA, Fatehpur-Shekhawati & Dr. Sanjay Attar & 9913147464 & dean.coafatehpur@ \\
+	Dean, COA, Kumher, Deeg & Dr. R. K. Meena & 8005842512 & dean.coabharatpur@ \\
+	Dean, COA, Navgaon, Alwar & Dr. Suman Khandelwal & 9414774474 & dean.coanavgaon@ \\
+	Dean, COA, Baseri, Dholpur & Dr. Juned Akhtar & 9414467446 & dean.coabaseri@ \\
+	Dean, COA, Kotputli & Dr. S. S. Manohar & 9414349440 & dean.coakotputli@ \\
+	Dean, COA, Kishangarh Bas & Dr. M. P. Yadav & 9460255391 & dean.coakishangarhbas @ \\
+	Dean, COA, Jhilai, Niwai-Tonk & Dr. R. S. Meena & 9414543695 & dean.coajhilai@ \\
+	Dean, COA, Peethampuri & Dr. S. K. Khandelwal & 9549692964 & dean.coapeethampuri @ \\
+	Dean, COA, Bhusawar, Bharatpur & Dr. U. B. Singh & 9414714234 & dean.coabhusawer@ \\
+	Dean, SKN College of Agri-Business Management & Dr. M.R. Choudhary & - & dean.sknabm@ \\
+	Dean, College of Horticulture, Durgapura & Dr. L. N. Bairwa & 8949898223 & dean.coh@ \\
+	Dean, College of Dairy Science \& Tech. & Dr. B. L. Jat & 9414516628 & dean.dairytech@ \\
+	Director, RARI, Durgapura & Dr. Harphool Singh & 9414773798 & director.rari@ \\
+	Director, Education & Dr. Rakesh Sammauriya & 9829611123 & director.edu@ \\
+	Director, Research & Dr. Ummed Singh & 8299837429 & director\_research @ \\
+	Director, Extension Education & Dr. R. N. Sharma & 9460643249 & director.ext@ \\
+	Director, PME & Dr. N. K. Gupta & 9460987039 & director.pme@ \\
+	Director, Students’ Welfare & Dr. K. C. Sharma & 7976584932 & dsw@ \\
+	Director, HRD & Dr. A. C. Shivran & 9414517546 & director.hrd@ \\
+	Controller of Examination & Dr. Nidhi Kundu & 01425-254981 & coe@ \\
+	Coordinator PG Examination & Dr. D.K. Gothwal & 9928845911 & coordinatorpg.exam @ \\
+	Estate Officer & Dr. Naveen Kumar & 9468468401 & estateofficer@ \\
+	Incharge, CIMCA & Dr. S. K. Sharma & 9414459205 & cimca@ \\
+	University Librarian & Dr. L.R. Yadav & 9414518051 & librarian@ \\
+	Secretary, Sports Board & Dr. Basant Kr. Bhinchhar & 8052645461 & sports@ \\
+	Secretary, Cultural Activities & Dr. D.K. Gothwal & 9928845911 & gothwaldk.pbg@ \\
+	Career Development Centre & Dr. K. C. Sharma & 7976584932 & chairman.cdc@ \\
+	University Vehicle Pool Officer & Dr. Upendra Singh & 9460515989 & poolofficer@ \\
+	
+\end{xltabular}
+\endgroup
 }
 
 Sri Karan Narendra Agriculture University integrates teaching, research, extension education service to fulfill its mandate as the Agricultural University of the state of Rajasthan. The students are in the prime focus of the University as they seek intellectual, personal and cultural development. The University provides high-quality undergraduate and post-graduate education in various fields of agriculture and allied branches.
@@ -68,34 +120,157 @@ The University awards the following degrees:
 	\item \textbf{Doctorate}: Ph.D.
 \end{itemize}
 
-% --- SEATS TABLE ---
-\begin{table}[H]
-	\caption{Number of Seats in Undergraduate Program in all Units of SKNAU, Jobner}
-	\centering
-	\renewcommand{\arraystretch}{1.3}
-	% Using TabularX for better width control
-	\begin{tabularx}{\textwidth}{@{} c L c c c c @{}}
+\section{Constituent Colleges and students’ intake:}
+Sri Karan Narendra Agriculture University integrates teaching, research, extension education and
+service to fulfill its mandate as the Agricultural University of the state of Rajasthan. The students are
+in the prime focus of the University as they seek intellectual, personal and cultural development. The
+University provides high-quality undergraduate and post-graduate education in various fields of
+agriculture and allied branches. There are fourteen constituent colleges of the University and the
+intake capacity thereof in Bachelor degree programme is as follows
+{\begingroup
+	% Use small font to ensure all columns fit on one page width
+	\small 
+	\setlength{\tabcolsep}{4pt} % Slightly reduce padding between columns
+	\rowcolors{2}{CollegeNavy!5}{white}
+	\renewcommand{\arraystretch}{1.3} % More vertical space for readability
+	
+	% Define the column types
+	% l = Number
+	% X = College Name (wraps text automatically)
+	% c = Center alignment for numbers
+	\begin{xltabular}{\linewidth}{@{\hspace{.25em}} l X c c c c c @{\hspace{.25em}}}
+%		\caption{List of Constituent Colleges and Seat Capacity} \\
 		\toprule
-		\textbf{S.No.} & \textbf{Name of the College (Est. Year)} & \textbf{Nor.} & \textbf{Pay.} & \textbf{ICAR} & \textbf{Total} \\ 
+		\rowcolor{schedheader}
+		\textbf{\color{white} S. No.} & 
+		\textbf{\color{white} Name of the College} & 
+		\textbf{\color{white} Est.Yr.} & 
+		\textbf{\color{white} Normal + EWS} & 
+		\textbf{\color{white} Payment} & 
+		\textbf{\color{white} ICAR} & 
+		\textbf{\color{white} Total} \\
 		\midrule
-		1 & S.K.N. College of Agriculture, Jobner (1947) & 70 & 40 & 16 & 126 \\
-		2 & College of Agriculture, Lalsot, Dausa (2007) & 36 & 20 & 08 & 64 \\
-		3 & College of Agriculture, Kumher, Deeg (2013) & 88 & 40 & 18 & 146 \\
-		4 & College of Agriculture, Fatehpur (2013) & 88 & 40 & 18 & 146 \\
-		5 & College of Agriculture, Navgaon, Alwar (2018) & 44 & 20 & -- & 64 \\
-		6 & College of Agriculture, Baseri, Dholpur (2019) & 44 & 20 & -- & 64 \\
-		7 & College of Agriculture, Kotputli (2019) & 44 & 20 & -- & 64 \\
-		8 & College of Agri., Kishangarh Bas (2020) & 44 & 20 & -- & 64 \\
-		9 & College of Agri., Jhilai, Niwai, Tonk (2021) & 44 & 20 & -- & 64 \\
-		10 & College of Agri., Peethampuri (2021) & 44 & 20 & -- & 64 \\
-		11 & College of Agri., Bhusawar, Bharatpur (2021) & 44 & 20 & -- & 64 \\
-		12 & College of Dairy Science \& Tech, Jobner (2021) & 44 & 20 & -- & 64 \\
-		13 & College of Horticulture, Durgapura, Jaipur (2023) & 44 & 20 & -- & 64 \\
-		14 & RARI, Durgapura, Jaipur & \multicolumn{4}{c}{No Bachelor degree programme} \\ 
+		\endfirsthead
+		
+		% --- Header for Next Pages ---
+		\multicolumn{7}{l}{\textit{Continued from previous page}} \\
+		\toprule
+		\rowcolor{schedheader}
+		\textbf{\color{white} S.No.} & 
+		\textbf{\color{white} Name of the College} & 
+		\textbf{\color{white} Est.Yr.} & 
+		\textbf{\color{white} Normal + EWS} & 
+		\textbf{\color{white} Payment} & 
+		\textbf{\color{white} ICAR} & 
+		\textbf{\color{white} Total} \\
+		\midrule
+		\endhead
+		
+		% --- Footer for Intermediate Pages ---
+		\midrule
+		\multicolumn{7}{r}{\textit{Continued on next page...}} \\
+		\endfoot
+		
+		% --- Footer for Last Page (The Note) ---
+		\bottomrule
+		\endlastfoot
+		
+		% --- DATA ---
+		1. & S.K.N. College of Agriculture, Jobner & 1947 & 64+6 & 54 & 16 & 140 \\
+		2. & College of Agriculture, Lalsot & 2007 & 32+4 & 20 & 8 & 64 \\
+		3. & College of Agriculture, Kumher, Deeg & 2013 & 80+8 & 40 & 18 & 146 \\
+		4. & College of Agriculture, Fatehpur-Shekhawati, Sikar & 2013 & 80+8 & 40 & 18 & 146 \\
+		5. & College of Agriculture, Navgaon, Alwar & 2018 & 40+4 & 20 & 0 & 64 \\
+		6. & College of Agriculture, Baseri, Dholpur & 2019 & 40+4 & 20 & 0 & 64 \\
+		7. & College of Agriculture, Kotputli & 2019 & 40+4 & 20 & 0 & 64 \\
+		8. & College of Agriculture, Kishangarh Bas, Khairthal & 2020 & 40+4 & 20 & 0 & 64 \\
+		9. & College of Agriculture, Jhilai, Niwai, Tonk & 2021 & 40+4 & 20 & 0 & 64 \\
+		10. & College of Agriculture, Peethampuri, Neem Ka Thana & 2021 & 40+4 & 20 & 0 & 64 \\
+		11. & College of Agriculture, Bhusawar, Bharatpur & 2021 & 40+4 & 20 & 0 & 64 \\
+		12. & College of Dairy Science \& Technology, Jobner & 2021 & 40+4 & 20 & 0 & 64 \\
+		13. & College of Horticulture, Durgapura, Jaipur & 2023 & 40+4 & 20 & 0 & 64 \\
+		
+		\midrule
+		& \textbf{TOTAL} & & \textbf{616+62} & \textbf{334} & \textbf{60} & \textbf{1072} \\
+		\midrule
+		
+		14. & Rajasthan Agricultural Research Institute (RARI), Durgapura, Jaipur1 & 2013 & \multicolumn{4}{c}{-- Only M.Sc. \& Ph. D --} \\
+		
+	\end{xltabular}
+	\endgroup
+}
+%Old table----
+\section{Degree Programmes in Different Colleges/Institutes}
+The University awards following degrees at under graduate and post-graduate levels in the courses of Agricultural, Horticulture and Dairy Science
+
+{\begin{table}[h!]
+	\centering
+	\small % Use small font for dense data
+	\renewcommand{\arraystretch}{1.4} % Add breathing room
+		% Apply row coloring (starts from row 2)
+	\rowcolors{2}{CollegeNavy!5}{white}
+		% Column Spec:
+	% p{2.5cm} = Programme Name (Fixed width)
+	% p{3.5cm} = College Name (Fixed width, slightly ragged right)
+	% X = Degree/Disciplines (Auto-expand, wraps text)
+	% c = Seats (Center)
+	\begin{tabularx}{\linewidth}{p{2.2cm} >{\raggedright\arraybackslash}p{4.5cm} >{\raggedright\arraybackslash} X c}
+		\toprule
+		\rowcolor{schedheader}
+		\textbf{\color{white} Programme} & 
+		\textbf{\color{white} College/Institute} & 
+		\textbf{\color{white} Degree / Disciplines} & 
+		\textbf{\color{white} Seats} \\
+		\midrule
+		% --- UNDER GRADUATE SECTION ---
+		% \cellcolor{white} ensures the stripe doesn't cut through the multirow text
+		\multirow{3}{=}{\textbf{Under\\Graduate}} 
+		& Constituent Colleges of SKNAU (13) 
+		& B.Sc. (Hons.) Ag. / Hort. \& Dairy Tech. (4 Year Degree) 
+		& \textbf{1072} \\
+		
+		& Govt. Colleges affiliated with SKNAU (17) 
+		& B.Sc. (Hons.) Ag. 
+		& \textbf{1020} \\
+		
+		& Pvt. Colleges affiliated with SKNAU (10) 
+		& B.Sc. (Hons.) Ag. 
+		& \textbf{900} \\
+		\midrule
+		
+		% --- POST GRADUATE SECTION ---
+		\multirow{3}{=}{\textbf{Post\\Graduate}\\ \textit{[M.Sc. (Ag. / Hort.)]}} 
+		& SKN College of Agriculture, Jobner \newline (14 Disciplines)
+		& Agronomy, Soil Science, Entomology, Plant Pathology, Genetics \& Plant Breeding, Agril. Economics, Agril. Extension Ed., Plant Physiology, LPM, Agril. Statistics, Bio-Chemistry, Fruit Sci., Veg. Sci., PSM \& Aromatic Crops
+		& \parbox{2cm}{\centering $41+17+12$\\$= \mathbf{70}$} \\
+		
+		& College of Agriculture, Fatehpur (Sikar) \newline (04 Disciplines)
+		& Agronomy, Soil Science, Genetics \& Plant Breeding, Plant Pathology, Fruit Sci.
+		& \parbox{2cm}{\centering $10+05$\\$= \mathbf{15}$} \\
+		
+		& RARI, Durgapura \newline (07 Disciplines)
+		& Agronomy, Soil Science, Entomology, Plant Pathology, Genetics \& Plant Breeding, Nematology, Vegetable Sci.
+		& \parbox{2cm}{\centering $20+13$\\$= \mathbf{33}$} \\
+		\midrule
+		
+		% --- DOCTORATE SECTION ---
+		\multirow{3}{=}{\textbf{Doctorate}\\ \textit{(Ph.D.)}} 
+		& SKN College of Agriculture, Jobner \newline (09 Disciplines)
+		& Agronomy, Soil Science, Entomology, Plant Pathology, Genetics \& Plant Breeding, Agril. Economics, Agril. Extension Ed., Vegetable Sci., PSM \& Aromatic Crops
+		& \parbox{2cm}{\centering $16+9+6$\\$= \mathbf{31}$} \\
+		
+		& College of Agriculture, Fatehpur (Sikar) \newline (01 Discipline)
+		& Agronomy
+		& \parbox{2cm}{\centering $2+1$\\$= \mathbf{3}$} \\
+		
+		& RARI, Durgapura \newline (07 Disciplines)
+		& Agronomy, Soil Science, Entomology, Plant Pathology, Genetics \& Plant Breeding, Plant Physiology, Vegetable Sci.
+		& \parbox{2cm}{\centering $18+13$\\$= \mathbf{31}$} \\
 		\bottomrule
 	\end{tabularx}
 \end{table}
-\clearpage
+}
+\pagebreak
 
 \section{College of Horticulture}
 
@@ -107,7 +282,7 @@ The University awards the following degrees:
 %	\end{tcolorbox}
 %\end{figure}
 
-\tcbincludegraphics[mygraphics,title={College}]{jpg/CoHPicAI.jpg}
+\tcbincludegraphics[mygraphics,title={College Building at RARI Durgapura}]{jpg/CoHPicAIe.jpg}
 
 
 The college was established in the year 2023 with the purpose of strengthening the state as well as the university in the field of horticulture education. The first batch of the college got enrolled in the academic year 2023-24 in the graduation program B.Sc. (Hons.) Horticulture. The programme follows the semester system and incorporates elements of the National Education Policy (NEP).
@@ -141,8 +316,7 @@ The college is situated at Durgapura, Jaipur near the Airport, running in the ca
 		\centering
 		\includegraphics[width=0.125\textwidth, height=0.125\textwidth, keepaspectratio]{jpg/Dean.JPG}
 	\end{wrapfigure}
-	\paragraph{Dr. L.N. Bairwa,}
-	\textbf{Dean, College of Horticulture, Durgapura}.\\
+	\paragraph{Dr. L.N. Bairwa,}\textbf{Dean, College of Horticulture, Durgapura}.\\
 	\small{Land line: 0141-2992057 \\
 		M-9414932548, 8949898223, \\
 		E-mail: dean.coh@sknau.ac.in}
